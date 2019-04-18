@@ -61,12 +61,20 @@
             function tax() {
                 return subtotal() / 10 ;
             }
+            function shipping() {
+                if(subtotal() > 1000){
+                    return 0;
+                }
+                return 40;
+
+            }
             function total() {
-                return subtotal() + tax() + 100;
+                return subtotal() + tax() + shipping();
             }
             document.getElementById("subtotal").innerHTML = "$" + subtotal();
             document.getElementById("tax").innerHTML = "$" + tax();
             document.getElementById("total").innerHTML = "$" + total();
+            document.getElementById('shipping').innerHTML = "$" + shipping();
         }
     </script>
 </head>
@@ -221,7 +229,7 @@
          </tr>  
          <tr class="strong">
             <td colspan="4" class="moveRight">Shipping</td>
-            <td>$100</td>
+            <td id="shipping"></td>
          </tr> 
          <tr class="warning strong text-danger">
             <td colspan="4" class="moveRight">Grand Total</td>
